@@ -26,8 +26,8 @@
                 <div class="card mt-4 mx-3" style="width: 18rem;">
                     <img src="https://source.unsplash.com/700x500" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $data->courses->course }}</h5>
-                        <p class="card-text">dasdsa</p>
+                        <h5 class="card-title">{{ $data->course->course }}</h5>
+                        <p class="card-text">{{ $data->course->lecture }}</p>
                         <a href="#" class="btn btn-primary d-flex justify-content-center">Enter</a>
                     </div>
                 </div>

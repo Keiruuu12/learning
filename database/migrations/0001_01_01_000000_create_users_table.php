@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('password');
             $table->string('address');
             $table->string('major')->nullable();
-            $table->foreignId('courses_id')->nullable();
             $table->string('faculty')->nullable();
             $table->rememberToken();
             $table->timestamps();

@@ -3,7 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Courses;
+use App\Models\Course;
+use App\Models\MyCourse;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -25,7 +26,6 @@ class DatabaseSeeder extends Seeder
             'address' => 'Iskandar Muda',
             'password' => bcrypt('password'),
             'major' => 'sistem informasi',
-            'courses_id' => 2,
             'remember_token' => "1234",
             'faculty' => 'FIKTI',
         ]);
@@ -37,30 +37,44 @@ class DatabaseSeeder extends Seeder
             'address' => 'Iskandar Muda',
             'password' => bcrypt('12345'),
             'major' => 'sistem informasi',
-            'courses_id' => 1,
             'remember_token' => "1234",
             'faculty' => 'FIKTI',
         ]);
 
-        Courses::create([
+        Course::create([
             'course' => 'math',
             'lecture' => 'ridwan',
             'enroll' => '12345',
             'major' => 'sistem informasi'
         ]);
 
-        Courses::create([
+        Course::create([
             'course' => 'blockchain',
             'lecture' => 'bawang',
             'enroll' => '12345',
             'major' => 'sosiologi'
         ]);
 
-        Courses::create([
+        Course::create([
             'course' => 'web programming',
             'lecture' => 'Jahe',
             'enroll' => '12345',
             'major' => 'psikologi'
+        ]);
+
+        MyCourse::create([
+            'course_id' => 1,
+            'user_id' => 1
+        ]);
+
+        MyCourse::create([
+            'course_id' => 2,
+            'user_id' => 1
+        ]);
+
+        MyCourse::create([
+            'course_id' => 3,
+            'user_id' => 2
         ]);
     }
 }

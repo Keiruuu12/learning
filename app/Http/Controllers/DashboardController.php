@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\MyCourse;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,7 +12,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $datas = User::where('id', auth()->user()->id)->get();
+        $datas = MyCourse::where('user_id', auth()->user()->id)->get();
         return view('dashboard', ["datas" => $datas]);
     }
 

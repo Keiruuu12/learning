@@ -46,8 +46,4 @@ class User extends Authenticatable
         ];
     }
 
-    public function courses()
-    {
-        return $this->belongsTo(Courses::class);
-    }
 }
