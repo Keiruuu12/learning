@@ -17,10 +17,10 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/courses', [CoursesController::class, 'index'])->name('courses');
+    Route::post('/courses', [CoursesController::class, 'store'])->name('enroll');
 });
 
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
-
 Route::post('/logout', [LoginController::class, 'logout']);

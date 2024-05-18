@@ -18,25 +18,30 @@
                     <img src="https://source.unsplash.com/700x500?{{ $data->course }}" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">{{ $data->course }}</h5>
-                        <p class="card-text">{{ $data->lecturer }}</p>
+                        <p class="card-text">{{ $data->lecture }}</p>
                         <button type="button" class="btn btn-primary col-sm-4"
-                            data-bs-toggle="modal" data-bs-target="#exampleModal">Enroll</button>
+                            data-bs-toggle="modal" data-bs-target="#{{ $data->id }}">Enroll</button>
 
                         <!-- Modal Bootstrap-->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        <div class="modal fade" id="{{ $data->id }}" tabindex="-1" aria-labelledby="{{ $data->id }}Label"
                             aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                        <h1 class="modal-title fs-5" id="{{ $data->id }}Label">Modal title</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="#">
+                                        <form action="{{ route('enroll') }}" method="POST">
+                                            @csrf
                                             <div class="mb-3">
-                                                <label for="recipient-name" class="col-form-label">Input Enroll</label>
-                                                <input type="text" class="form-control" id="recipient-name">
+                                                <label for="course" class="col-form-label">Course</label>
+                                                <input type="text" class="form-control" id="enroll" name="course" value="{{ $data->course }}" readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="enroll" class="col-form-label">Input Enroll</label>
+                                                <input type="text" class="form-control" id="enroll" name="enroll">
                                             </div>
                                     </div>
                                         <div class="modal-footer">
