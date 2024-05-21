@@ -1,5 +1,5 @@
 {{-- CSS Bootstrap --}}
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="/css/bootstrap.css">
 
 {{-- Icon Feather  --}}
 <script src="feather-icons/dist/feather.js"></script>
@@ -45,7 +45,7 @@
   </nav>
 
 {{-- Javascript Bootstrap  --}}
-<script src="js/bootstrap.js"></script>
+<script src="/js/bootstrap.js"></script>
 
 {{-- Feather Replacement  --}}
 <script>

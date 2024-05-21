@@ -1,16 +1,21 @@
 <?php
 
+use App\Http\Controllers\CourseClassController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::redirect('/', 'login');
+// Route::redirect('/', 'login');
+
+Route::fallback(function () {
+    return redirect()->route('dashboard');
+});
 
 
 Route::middleware(['auth'])->group(function (){
@@ -18,8 +23,8 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/courses', [CoursesController::class, 'index'])->name('courses');
     Route::post('/courses', [CoursesController::class, 'store'])->name('enroll');
+    Route::get('/course/{course}', [CourseClassController::class, 'index'])->name('course.index');
 });
-
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');

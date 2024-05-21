@@ -12,6 +12,11 @@
     @extends('partials.navbar')
     <div class="container mt-5">
         <h1>Choose the course</h1>
+        @if (session()->has('messages'))
+        <div class="{{ session('messages')['notif'] }}">
+            {{ session('messages')['message'] }}    
+        </div>    
+        @endif
         <div class="row">
             @foreach ($datas as $data)
                 <div class="card mt-4 mx-3" style="width: 18rem;">

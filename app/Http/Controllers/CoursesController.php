@@ -46,7 +46,10 @@ class CoursesController extends Controller
                 ->first();
 
         if(!$course){
-            return "enroll salah";
+            return redirect('courses')->with(session()->flash('messages', [
+                'message' => 'Penambahan Course Gagal',
+                'notif' => 'alert alert-danger'
+            ]));
         }
 
         MyCourse::create([
@@ -54,7 +57,10 @@ class CoursesController extends Controller
             'course_id' => $course->id
         ]);
 
-        return "course berhasil ditambahkan";
+        return redirect('courses')->with(session()->flash('messages', [
+            'message' => 'Penambahan Berhasil',
+            'notif' => 'alert alert-success'
+        ]));
     }
 
     /**
