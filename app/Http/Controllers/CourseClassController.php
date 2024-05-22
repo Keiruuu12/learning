@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\CourseClass;
+use App\Models\MyCourse;
+use App\Models\PracticeForm;
+use App\Models\userAnswer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -11,10 +15,18 @@ class CourseClassController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($nameCourse)
+    public function index($idCourse)
     {
-        $title = Str::title($nameCourse);
-        return view('course.index', ['title' => $title]);
+        $title = Course::where('id', $idCourse)->first();
+
+        $datas = PracticeForm::where('user_id', auth()->user()->id)
+                ->where('course_id', $idCourse)->get();
+
+        $userAnswers = userAnswer::where('user_id', auth()->user()->id)
+                    ->where('course_id', $idCourse)
+                    ->get();
+                    
+        return view('course.index', ['title' => $title, 'datas' => $datas, 'userAnswers' => $userAnswers]);   
     }
 
     /**
@@ -30,7 +42,28 @@ class CourseClassController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_answer' => 'required',
+            'course_id' => 'required',
+            'task_content' => 'required',
+            'learning' => 'required',
+            'practice_id' => 'required',
+        ]);
+
+
+        userAnswer::create([
+            'course_id' => $request->course_id,
+            'user_id' => auth()->user()->id,
+            'learning' => $request->learning,
+            'practice_id' => $request->practice_id,
+            'user_answer' => $request->user_answer,
+            'task_content' => $request->task_content
+        ]);
+
+        return redirect('course.index')->with(session()->flash('messages', [
+            'message' => 'Berhasil Menambahkan Jawaban',
+            'notif' => 'alert alert-success'
+        ]));
     }
 
     /**

@@ -15,4 +15,9 @@ class Course extends Model
     {
         return $this->hasMany(MyCourse::class);
     }
+
+    public function getRouteKey() : string
+    {
+        return 'id';
+    }
 }

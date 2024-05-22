@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CourseClass extends Model
+class userAnswer extends Model
 {
     use HasFactory;
-
+    
     protected $guarded = ['id'];
 
     public function practiceForm()

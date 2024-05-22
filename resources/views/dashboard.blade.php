@@ -28,7 +28,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $data->course->course }}</h5>
                         <p class="card-text">{{ $data->course->lecture }}</p>
-                        <a href="course/{{ $data->course->course }}" class="btn btn-primary d-flex justify-content-center">Enter</a>
+                        <a href="course/{{ $data->course->id }}" class="btn btn-primary d-flex justify-content-center">Enter</a>
                     </div>
                 </div>
             @endforeach

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\MyCourse;
+use App\Models\PracticeForm;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -75,6 +76,46 @@ class DatabaseSeeder extends Seeder
         MyCourse::create([
             'course_id' => 3,
             'user_id' => 2
+        ]);
+
+        PracticeForm::create([
+            'course_id' => 1,
+            'user_id' => 1,
+            'type' => 'Practice',
+            'learning' => 1,
+            'task_content' => 'Menjawab soal nomor 1 - 10 pada halaman 49 (user id 1)'
+        ]);
+
+        PracticeForm::create([
+            'course_id' => 1,
+            'user_id' => 1,
+            'type' => 'Practice',
+            'learning' => 2,
+            'task_content' => 'Menjawab soal latihan berikut ini (user id 1)'
+        ]);
+
+        PracticeForm::create([
+            'course_id' => 1,
+            'user_id' => 2,
+            'type' => 'Practice',
+            'learning' => 2,
+            'task_content' => 'Menjawab soal latihan berikut ini (user id 2)'
+        ]);
+
+        PracticeForm::create([
+            'course_id' => 2,
+            'user_id' => 2,
+            'type' => 'Practice',
+            'learning' => 1,
+            'task_content' => 'Menjawab soal latihan halaman 3 A - B'
+        ]);
+
+        PracticeForm::create([
+            'course_id' => 3,
+            'user_id' => 2,
+            'type' => 'Modul',
+            'learning' => 1,
+            'task_content' => 'Silahkan baca dan pahami modul berikut ini'
         ]);
     }
 }

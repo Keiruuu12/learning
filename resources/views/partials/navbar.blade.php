@@ -1,9 +1,6 @@
 {{-- CSS Bootstrap --}}
 <link rel="stylesheet" href="/css/bootstrap.css">
 
-{{-- Icon Feather  --}}
-<script src="feather-icons/dist/feather.js"></script>
-
 <nav class="navbar bg-body-tertiary fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="{{ route('dashboard') }}">Learning Project</a>
@@ -46,6 +43,9 @@
 
 {{-- Javascript Bootstrap  --}}
 <script src="/js/bootstrap.js"></script>
+
+{{-- Icon Feather  --}}
+<script src="/feather-icons/dist/feather.js"></script>
 
 {{-- Feather Replacement  --}}
 <script>
