@@ -20,6 +20,7 @@ class CoursesController extends Controller
             ->whereRaw('my_courses.course_id = courses.id')
             ->where('my_courses.user_id', $user);
         })->get();
+
         return view('courses', ['datas' => $datas]);
     }
 

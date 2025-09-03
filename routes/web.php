@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CourseClassController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\DashboardController;
@@ -25,8 +26,9 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/courses', [CoursesController::class, 'index'])->name('courses');
     Route::post('/courses', [CoursesController::class, 'store'])->name('enroll');
 
-    Route::get('/course/{course:id}', [CourseClassController::class, 'index'])->name('course.index');
-    Route::post('/course/{course:id}', [CourseClassController::class, 'store'])->name('course.store');
+    Route::get('/course/{course:course}', [CourseClassController::class, 'index'])->name('course.index');
+    Route::post('/course/{course:course}', [CourseClassController::class, 'store'])->name('course.store');
+    Route::delete('/course/{course:course}/{userAnswer:id}', [CourseClassController::class, 'delete'])->name('answers.delete');
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');

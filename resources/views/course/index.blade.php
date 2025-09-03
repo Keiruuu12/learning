@@ -12,12 +12,12 @@
     @extends('partials.navbar')
     <div class="container" style="margin-top: 10vh">
         <div class="d-flex justify-content-between mb-4">
-            <a href="#" class=""> 
-                <button class="btn btn-success">
-                    <i data-feather="user-check"></i> Submit Attendance
-                </button>
-            </a>
-    
+            @if (session()->has('message'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 7%">
+                {{ session('message') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
             <a href="{{ route('dashboard') }}">
                 <button class="btn btn-outline-secondary">
                     <i data-feather="arrow-left"></i> Back
@@ -68,12 +68,21 @@
                                     @endforeach
 
                                     <div class="mb-3">
-                                        <label for="user_answer" class="form-label">Input Your Answer File</label>
+                                        <label for="user_answer" class="form-label">Input Your New Answer File</label>
                                         <input class="form-control" type="file" id="user_answer" name="user_answer">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                         <button type="submit" class="btn btn-primary">Submit</button>
+                                        
+                                        @if ($userAnswers->where('learning', $data->learning)->isNotEmpty() )
+                                        <form action="{{ url('/delete-answer/' . $title->course ) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+                                        </form>
+                                        @endif
+
                                     </div>
                                 </form>
                             </div>

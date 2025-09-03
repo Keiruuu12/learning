@@ -26,7 +26,8 @@ class CourseClassController extends Controller
                     ->where('course_id', $idCourse)
                     ->get();
                     
-        return view('course.index', ['title' => $title, 'datas' => $datas, 'userAnswers' => $userAnswers]);   
+                    
+        return view('course.index', ['title' => $title, 'datas' => $datas, 'userAnswers' => $userAnswers]);    
     }
 
     /**
@@ -51,7 +52,7 @@ class CourseClassController extends Controller
         ]);
 
 
-        userAnswer::create([
+        $userAnswer = userAnswer::create([
             'course_id' => $request->course_id,
             'user_id' => auth()->user()->id,
             'learning' => $request->learning,
@@ -60,10 +61,19 @@ class CourseClassController extends Controller
             'task_content' => $request->task_content
         ]);
 
+        if ($request->hasFile('user_answer')) {
+            $file = $request->file('user_answer');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('answer', $fileName, 'public'); 
+            $userAnswer->user_answer = $fileName;
+            $userAnswer->save();
+        }
+
         return redirect('course.index')->with(session()->flash('messages', [
             'message' => 'Berhasil Menambahkan Jawaban',
             'notif' => 'alert alert-success'
         ]));
+        
     }
 
     /**
@@ -71,7 +81,7 @@ class CourseClassController extends Controller
      */
     public function show(CourseClass $courseClass)
     {
-    
+        
     }
 
     /**
@@ -93,8 +103,10 @@ class CourseClassController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CourseClass $courseClass)
+    public function delete($id)
     {
-        //
+        userAnswer::find($id)->delete();
+        return redirect()->back();
+
     }
 }

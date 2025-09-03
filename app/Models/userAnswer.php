@@ -15,4 +15,9 @@ class userAnswer extends Model
     {
         $this->belongsTo(PracticeForm::class);
     }
+
+    public function getRouteKey() : string
+    {
+        return 'userAnswer';
+    }
 }

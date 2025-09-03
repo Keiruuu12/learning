@@ -13,7 +13,7 @@
         <h1>Profile Page</h1>
         <div class="card mt-2">
             <div class="card-body">
-                <img src="https://source.unsplash.com/200x260" class="rounded mt-3 mx-auto d-block" alt="...">
+                <img src="img/profile.jpeg" class="rounded mt-3 mx-auto d-block" alt="...">
                 @foreach ($datas as $data)
                 <div class="mb-3 mt-3 row">
                     <label for="name" class="col-sm-2 col-form-label">Name</label>

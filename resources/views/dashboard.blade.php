@@ -24,7 +24,7 @@
         <div class="row">
             @foreach ($datas as $data)
                 <div class="card mt-4 mx-3" style="width: 18rem;">
-                    <img src="https://source.unsplash.com/700x500" class="card-img-top">
+                    <img src="img/major.jpeg" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">{{ $data->course->course }}</h5>
                         <p class="card-text">{{ $data->course->lecture }}</p>
@@ -33,33 +33,6 @@
                 </div>
             @endforeach
         </div>
-
-        <h1 class="mt-5">Pending Task</h1>
-        <div class="mt-3">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div style="display: flex; justify-content: space-between;">
-                        <h2>Matematika</h2>
-                        <h6>12:00 - 14:00</h6>
-                    </div>
-                    <p>Soal halaman 15 bagian A dan B</p>
-                    <a href="#" class="btn btn-primary d-flex justify-content-center">Enter</a>
-                </div>
-            </div>
-        </div>
-        <div class="mt-3">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div style="display: flex; justify-content: space-between;">
-                        <h2>Matematika</h2>
-                        <h6>12:00 - 14:00</h6>
-                    </div>
-                    <p>Soal halaman 15 bagian A dan B</p>
-                    <a href="#" class="btn btn-primary d-flex justify-content-center">Enter</a>
-                </div>
-            </div>
-        </div>
-
     </div>
 
 

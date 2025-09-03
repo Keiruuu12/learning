@@ -20,7 +20,7 @@
         <div class="row">
             @foreach ($datas as $data)
                 <div class="card mt-4 mx-3" style="width: 18rem;">
-                    <img src="https://source.unsplash.com/700x500?{{ $data->course }}" class="card-img-top">
+                    <img src="img/class.jpeg" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">{{ $data->course }}</h5>
                         <p class="card-text">{{ $data->lecture }}</p>

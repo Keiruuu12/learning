@@ -27,7 +27,6 @@
         <div class="card-header">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="https://source.unsplash.com/1300x250" class="d-block w-20" alt="https://source.unsplash.com/1440x250">
             </div>
           </div>
         </div>
